@@ -6,7 +6,7 @@ from player import Player # importing player class from player.py
 class Game:
     def __init__(self, screen):  # Add the 'screen' parameter
         self.screen = screen
-        player_sprite = Player((250, 430))
+        player_sprite = Player((screen.get_width() // 2, screen.get_height() - 100)) # creating player sprite position
         self.player = pygame.sprite.GroupSingle(player_sprite)
 
     def run(self):

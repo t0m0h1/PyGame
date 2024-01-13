@@ -1,13 +1,25 @@
 import pygame
 import sys
 from player import Player # importing player class from player.py
-
+from obstacle import Obstacle # importing obstacle class from obstacle.py
 
 class Game:
     def __init__(self, screen):  # Add the 'screen' parameter
         self.screen = screen
+
+        # player setup
         player_sprite = Player((screen.get_width() // 2, screen.get_height() - 8)) # creating player sprite position
         self.player = pygame.sprite.GroupSingle(player_sprite)
+
+        # obstacle setup
+        self.shape = obstacle.shape()
+        self.block_size = 6
+        self.blocks = pygame.sprite.Group()
+
+
+    def create_obstacle(self):
+        pass
+
 
     def run(self):
         self.player.update()

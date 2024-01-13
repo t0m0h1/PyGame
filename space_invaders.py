@@ -3,17 +3,14 @@ import sys
 from player import Player # importing player class from player.py
 
 
-# writing game class
 class Game:
-    def __init__(self):
-        player_sprite = Player((300,300))
+    def __init__(self, screen):  # Add the 'screen' parameter
+        self.screen = screen
+        player_sprite = Player((300, 600))
         self.player = pygame.sprite.GroupSingle(player_sprite)
 
-
     def run(self):
-        self.player.draw(screen)
-
-# objective is to update sprites and display them on screen
+        self.player.draw(self.screen) # objective is to update sprites and display them on screen
 
 
 
@@ -24,7 +21,7 @@ if __name__ == "__main__":
     screen = pygame.display.set_mode((swidth, sheight))
     pygame.display.set_caption("Space Invaders")
     clock = pygame.time.Clock()
-    game = Game()
+    game = Game(screen=screen)
 
     #Main game loop
     while True:
@@ -38,4 +35,6 @@ if __name__ == "__main__":
 
         pygame.display.flip()
         clock.tick(60)
+
+
 

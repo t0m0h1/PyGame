@@ -1,5 +1,6 @@
 import pygame
 from pygame.sprite import Sprite
+from laser import Laser
 
 
 class Player(Sprite):
@@ -41,7 +42,8 @@ class Player(Sprite):
                 self.ready = True
 
     def shoot_laser(self):
-        print("pew")
+        laser = Laser(self.rect.center)
+        laser.move()
 
     def update(self):
         self.get_input()

@@ -46,6 +46,7 @@ class Player(Sprite):
     def shoot_laser(self):
         self.lasers.add(Laser(self.rect.center))
 
+
     def update(self):
         self.get_input()
         self.recharge()

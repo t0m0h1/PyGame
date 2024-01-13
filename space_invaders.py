@@ -1,16 +1,21 @@
 import pygame
 import sys
+from player import Player # importing player class from player.py
+
 
 # writing game class
 class Game:
     def __init__(self):
-        pass
+        player_sprite = Player((300,300))
+        self.player = pygame.sprite.GroupSingle(player_sprite)
+
 
     def run(self):
-        pass
-
+        self.player.draw(screen)
 
 # objective is to update sprites and display them on screen
+
+
 
 # initializing pygame
 if __name__ == "__main__":
@@ -34,4 +39,3 @@ if __name__ == "__main__":
         pygame.display.flip()
         clock.tick(60)
 
-        

@@ -16,8 +16,13 @@ class Player(Sprite):
 
         if keys[pygame.K_LEFT]:
             self.rect.x -= self.speed
+            if self.rect.x <= 0:
+                self.rect.x = 0
+
         elif keys[pygame.K_RIGHT]:
             self.rect.x += self.speed
+            if self.rect.x >= 450:
+                self.rect.x = 450
 
     def update(self):
         self.get_input()

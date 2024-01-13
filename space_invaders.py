@@ -10,7 +10,9 @@ class Game:
         self.player = pygame.sprite.GroupSingle(player_sprite)
 
     def run(self):
+        self.player.update()
         self.player.draw(self.screen) # objective is to update sprites and display them on screen
+
 
 
 

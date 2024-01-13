@@ -14,8 +14,6 @@ class Game:
         self.player.draw(self.screen) # objective is to update sprites and display them on screen
 
 
-
-
 # initializing pygame
 if __name__ == "__main__":
     pygame.init()

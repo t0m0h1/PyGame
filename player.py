@@ -11,6 +11,8 @@ class Player(Sprite):
         self.rect = self.image.get_rect(midbottom=pos)
         self.speed = 5
 
+    
+
     def get_input(self):
         keys = pygame.key.get_pressed()
 
@@ -24,6 +26,14 @@ class Player(Sprite):
             if self.rect.x >= 450:
                 self.rect.x = 450
 
+        elif keys[pygame.K_SPACE]:
+            self.shoot_laser()
+
+    def shoot_laser(self):
+        pass
+
     def update(self):
         self.get_input()
+
+
 

@@ -45,6 +45,7 @@ class Player(Sprite):
 
     def update(self):
         self.get_input()
+        self.recharge()
 
 
 

@@ -7,7 +7,6 @@ class Laser(pygame.sprite.Sprite):
         super().__init__()
         self.image = pygame.Surface((5, 10))
         self.image.fill(yellow)
-        self.rect = self.image.get_rect(centre = pos)
+        self.rect = self.image.get_rect(center=pos)
 
-    def move(self):
-        self.rect.y -= 5
+

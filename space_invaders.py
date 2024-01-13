@@ -12,6 +12,7 @@ class Game:
     def run(self):
         self.player.update()
         self.player.draw(self.screen) # objective is to update sprites and display them on screen
+        self.player.sprite.draw(self.screen)
 
 
 # initializing pygame

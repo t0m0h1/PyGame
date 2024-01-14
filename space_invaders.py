@@ -31,6 +31,10 @@ class Game:
                     y = row_index * self.block_size
                     block = obstacle.Block(self.block_size, (241, 79, 80), x, y)
 
+    def create_multiple_obstacles(self, *offset, x_start, y_start):
+        for x in offset:
+            self.create_obstacle(x_start, y_start, offset_x=x)
+
 
     def run(self):
         self.player.update()

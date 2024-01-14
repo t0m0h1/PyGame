@@ -77,7 +77,7 @@ class Game:
         self.player = pygame.sprite.GroupSingle(player_sprite)
 
         # obstacle setup
-        self.shape = obstacle.shape() # calling shape method from block.py
+        self.shape = obstacle.shape # 
         self.block_size = 6
         self.blocks = pygame.sprite.Group()
         self.obstacle_amount = 4
@@ -107,6 +107,8 @@ class Game:
             laser.rect.y -= 5
             if laser.rect.y <= 0:
                 laser.kill()
+
+        self.blocks.draw(self.screen)
 
 
 # initialising pygame

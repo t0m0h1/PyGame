@@ -17,5 +17,3 @@ shape = [
     'xxxxxxxxx',
     'xxxxxxxxx',
 ]
-
-    

@@ -3,7 +3,7 @@ import sys
 import pygame
 import sys
 from player import Player # importing player class from player.py
-import obstacle # importing obstacle module
+from obstacle import Block # importing obstacle module
 
 
 class Game:
@@ -16,10 +16,12 @@ class Game:
 
         # obstacle setup
         x = 0  # Define the value of "x"
-        self.shape = obstacle.Block.shape(self.x) # calling shape method from block.py
+        self.shape = obstacle.shape # calling shape method from block.py
         self.block_size = 6
         self.blocks = pygame.sprite.Group()
-        self.create_obstacle() # calling create_obstacle method
+        self.obstacle_amount = 4
+        self.obstacle_x_positions = [num * (self.screen.get_width() // (self.obstacle_amount + 1)) for num in range(1, self.obstacle_amount + 1)]
+        self.create_multiple_obstacles(*self.obstacle.x_positions, x_start=screen.get_width() / 15, y_start=480) # calling create_obstacle method
 
 
     def create_obstacle(self):

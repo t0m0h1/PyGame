@@ -16,7 +16,7 @@ class Game:
 
         # obstacle setup
         x = 0  # Define the value of "x"
-        self.shape = obstacle.shape # calling shape method from block.py
+        self.shape = obstacle.Block.shape # calling shape attribute from Block class
         self.block_size = 6
         self.blocks = pygame.sprite.Group()
         self.obstacle_amount = 4

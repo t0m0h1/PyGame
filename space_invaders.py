@@ -1,7 +1,8 @@
 import pygame
 import sys
 from player import Player # importing player class from player.py
-from obstacle import Obstacle # importing obstacle class from obstacle.py
+import obstacle # importing obstacle module
+
 
 class Game:
     def __init__(self, screen):  # Add the 'screen' parameter
@@ -18,7 +19,12 @@ class Game:
 
 
     def create_obstacle(self):
-        pass
+        for row_index, row in enumerate(self.shape):
+            for col_index, col in enumerate(row):
+                if col == x:
+                    x = col_index * self.block_size
+                    y = row_index * self.block_size
+                    block = obstacle.Block(self.block_size, (241, 79, 80), x, y)
 
 
     def run(self):

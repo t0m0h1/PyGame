@@ -77,11 +77,12 @@ class Game:
         self.player = pygame.sprite.GroupSingle(player_sprite)
 
         # obstacle setup
-        # Define the value of "x"
-        self.shape = obstacle.Block.shape() # calling shape method from block.py
+        self.shape = obstacle.shape() # calling shape method from block.py
         self.block_size = 6
         self.blocks = pygame.sprite.Group()
-        self.create_obstacle() # calling create_obstacle method
+        self.obstacle_amount = 4
+        self.obstacle_x_positions = [num * (self.screen.get_width() // (self.obstacle_amount + 1)) for num in range(1, self.obstacle_amount + 1)]
+        self.create_multiple_obstacles(*self.obstacle.x_positions, x_start=screen.get_width() / 15, y_start=480) # calling create_obstacle method
 
 
     def create_obstacle(self, x):
@@ -91,6 +92,11 @@ class Game:
                     x = col_index * self.block_size
                     y = row_index * self.block_size
                     block = obstacle.Block(self.block_size, (241, 79, 80), x, y)
+                    self.blocks.add(block)
+
+    def create_multiple_obstacles(self, *offset, x_start, y_start):
+        for x in offset:
+            self.create_obstacle(x_start, y_start, offset_x=x)
 
 
     def run(self):

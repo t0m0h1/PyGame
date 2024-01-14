@@ -13,9 +13,10 @@ class Game:
         self.player = pygame.sprite.GroupSingle(player_sprite)
 
         # obstacle setup
-        self.shape = obstacle.shape()
+        #self.shape = obstacle.shape()
         self.block_size = 6
         self.blocks = pygame.sprite.Group()
+        #self.create_obstacle() # calling create_obstacle method
 
 
     def create_obstacle(self):
@@ -58,6 +59,3 @@ if __name__ == "__main__":
 
         pygame.display.flip()
         clock.tick(60)
-
-
-

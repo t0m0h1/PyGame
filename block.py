@@ -9,3 +9,14 @@ class Block(pygame.sprite.Sprite):
 
     def update(self):
         pass
+
+    def shape(self):
+        return [
+            ["x", "x", "x", "x", "x", "x", "x", "x", "x", "x"],
+            ["x", "x", "x", "x", "x", "x", "x", "x", "x", "x"],
+            ["x", "x", "x", "x", "x", "x", "x", "x", "x", "x"],
+            ["x", "x", "x", "x", "x", "x", "x", "x", "x", "x"],
+            ["x", "x", "x", "x", "x", "x", "x", "x", "x", "x"],
+            ["x", "x", "x", "x", "x", "x", "x", "x", "x", "x"]
+        ]
+    

@@ -3,7 +3,7 @@ import sys
 import pygame
 import sys
 from player import Player # importing player class from player.py
-from obstacle import Block # importing obstacle module
+import obstacle # importing obstacle module
 
 
 class Game:
@@ -15,8 +15,7 @@ class Game:
         self.player = pygame.sprite.GroupSingle(player_sprite)
 
         # obstacle setup
-        x = 0  # Define the value of "x"
-        self.shape = obstacle.Block.shape # calling shape attribute from Block class
+        self.shape = obstacle.shape # calling shape attribute from Block class
         self.block_size = 6
         self.blocks = pygame.sprite.Group()
         self.obstacle_amount = 4

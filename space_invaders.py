@@ -20,8 +20,8 @@ class Game:
         self.blocks = pygame.sprite.Group()
         self.obstacle_amount = 4
         self.obstacle_x_positions = [num * (self.screen.get_width() // (self.obstacle_amount + 1)) for num in range(1, self.obstacle_amount + 1)]
-        self.create_multiple_obstacles(*self.obstacle.x_positions, x_start=screen.get_width() / 15, y_start=480) # calling create_obstacle method
-
+        # calling create_obstacle method
+        self.create_multiple_obstacles(*self.obstacle_x_positions, x_start=screen.get_width() / 15, y_start=480)
 
     def create_obstacle(self):
         for row_index, row in enumerate(self.shape):
@@ -33,7 +33,7 @@ class Game:
 
     def create_multiple_obstacles(self, *offset, x_start, y_start):
         for x in offset:
-            self.create_obstacle(x_start, y_start, offset_x=x)
+            self.create_obstacle(x_start, y_start, x)
 
 
     def run(self):

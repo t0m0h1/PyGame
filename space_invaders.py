@@ -71,7 +71,7 @@ if __name__ == "__main__":
                 pygame.quit()
                 sys.exit()
 
-        screen.fill((0,0,0))
+        screen.fill(('gray'))
         game.run()
 
         pygame.display.flip()

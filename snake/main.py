@@ -94,6 +94,7 @@ def run():
         draw_snake(snake_block, snake_pixels)
         display_score(snake_length - 1)
 
+
         pygame.display.update()
         clock.tick(60)
 

@@ -18,8 +18,8 @@ class Game:
         self.shape = obstacle.shape # calling shape attribute from Block class
         self.block_size = 6
         self.blocks = pygame.sprite.Group()
-        self.obstacle_amount = 4
-        self.obstacle_x_positions = [num * (self.screen.get_width() // (self.obstacle_amount + 1)) for num in range(1, self.obstacle_amount + 1)]
+        self.obstacle_amount = 3
+        self.obstacle_x_positions = [num * (self.swidth / self.obstacle_amount) for num in range(1, self.obstacle_amount + 1)]
         # calling create_obstacle method
         self.create_multiple_obstacles(*self.obstacle_x_positions, x_start=screen.get_width() / 15, y_start=480)
 

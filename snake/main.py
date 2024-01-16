@@ -18,6 +18,12 @@ screen = pygame.display.set_mode((swidth, sheight))
 pygame.display.set_caption("Snake Game")
 
 clock = pygame.time.Clock()
+
+snake_block = 10
+snake_speed = 15
+
+game_font = pygame.font.SysFont("comicsansms", 35)
+
 # Game loop
 running = True
 while running:

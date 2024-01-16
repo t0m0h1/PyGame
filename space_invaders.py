@@ -21,15 +21,16 @@ class Game:
         self.obstacle_amount = 4
         self.obstacle_x_positions = [num * (self.screen.get_width() // (self.obstacle_amount + 1)) for num in range(1, self.obstacle_amount + 1)]
         # calling create_obstacle method
-        self.create_multiple_obstacles(*self.obstacle_x_positions, x_start=screen.get_width() / 15, y_start=480)
+        self.create_multiple_obstacles(*self.obstacle_x_positions, x_start=0 / 15, y_start=480)
 
-    def create_obstacle(self):
+    def create_obstacle(self, x_start, y_start, offset_x):
         for row_index, row in enumerate(self.shape):
             for col_index, col in enumerate(row):
                 if col == x:
-                    x = col_index * self.block_size
-                    y = row_index * self.block_size
+                    x = x_start + col_index * self.block_size + offset_x
+                    y = y_start + row_index * self.block_size 
                     block = obstacle.Block(self.block_size, (241, 79, 80), x, y)
+                    self.blocks.add(block)
 
     def create_multiple_obstacles(self, *offset, x_start, y_start):
         for x in offset:

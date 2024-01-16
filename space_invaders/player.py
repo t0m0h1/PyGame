@@ -1,6 +1,6 @@
 import pygame
 from pygame.sprite import Sprite
-from laser import Laser
+from space_invaders.laser import Laser
 
 
 class Player(Sprite):

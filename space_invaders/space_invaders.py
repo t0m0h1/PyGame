@@ -2,8 +2,8 @@ import pygame
 import sys
 import pygame
 import sys
-from player import Player # importing player class from player.py
-import obstacle # importing obstacle module
+from space_invaders.player import Player # importing player class from player.py
+import space_invaders.obstacle as obstacle # importing obstacle module
 
 
 class Game:

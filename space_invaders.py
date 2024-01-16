@@ -38,13 +38,20 @@ class Game:
 
 
     def run(self):
+        # objective is to update sprites and display them on screen
         self.player.update()
-        self.player.draw(self.screen) # objective is to update sprites and display them on screen
-        self.player.sprite.lasers.draw(self.screen) # objective is to male lasers visible on screen
+        self.player.draw(self.screen) 
+        self.player.sprite.lasers.draw(self.screen) 
+        
+        # objective is to make lasers move up the screen
         for laser in self.player.sprite.lasers:
             laser.rect.y -= 5
             if laser.rect.y <= 0:
                 laser.kill()
+
+        # objective is to display blocks on screen
+        self.blocks.draw(self.screen)
+        
 
 
 # initialising pygame

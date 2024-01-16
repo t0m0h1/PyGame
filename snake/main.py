@@ -53,51 +53,26 @@ def run():
     food_x = round(random.randrange(0, swidth - snake_block) / 10.0) * 10.0
     food_y = round(random.randrange(0, sheight - snake_block) / 10.0) * 10.0
 
-
-# Game loop
-while not game_over:
-   # Event handling    
-    while game_close == True:
-        screen.fill(black)
-        game_over_message = message_font.render("Game Over!", True, red)
-        screen.blit(game_over_message, [swidth / 3, sheight / 3])
-        display_score(snake_block - 1)
-        pygame.display.update()
-
+    while not game_over:
+        # game over screen
         for event in pygame.event.get():
-            if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_q:
-                    game_over = True
-                    game_close = False
-                if event.key == pygame.K_r:
-                    run()
             if event.type == pygame.QUIT:
                 game_over = True
-                game_close = False
 
+            # snake movement
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_LEFT:
-                    x_change = -snake_block
+                    x_change -= snake_block
                     y_change = 0
                 elif event.key == pygame.K_RIGHT:
-                    x_change = snake_block
+                    x_change += snake_block
                     y_change = 0
                 elif event.key == pygame.K_UP:
                     x_change = 0
-                    y_change = -snake_block
+                    y_change -= snake_block
                 elif event.key == pygame.K_DOWN:
                     x_change = 0
-                    y_change = snake_block
+                    y_change += snake_block
 
-    # Game logic
-    # (Your game logic code goes here)
 
-    # Drawing code
-    screen.fill((0, 0, 0))  # Fill the screen with black color
 
-    # Update the display
-    pygame.display.flip()
-    clock.tick(60)  # 60 frames per second
-
-# Clean up Pygame
-pygame.quit()

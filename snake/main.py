@@ -51,7 +51,7 @@ def run():
 
     # food position
     food_x = round(random.randrange(0, swidth - snake_block) / 10.0) * 10.0
-
+    food_y = round(random.randrange(0, sheight - snake_block) / 10.0) * 10.0
 
 
 # Game loop

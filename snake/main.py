@@ -62,17 +62,24 @@ def run():
             # snake movement
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_LEFT:
-                    x_change -= snake_block
+                    x_change = -snake_block
                     y_change = 0
                 elif event.key == pygame.K_RIGHT:
-                    x_change += snake_block
+                    x_change = snake_block
                     y_change = 0
                 elif event.key == pygame.K_UP:
                     x_change = 0
-                    y_change -= snake_block
+                    y_change = -snake_block
                 elif event.key == pygame.K_DOWN:
                     x_change = 0
-                    y_change += snake_block
+                    y_change = snake_block
 
+        if x >= swidth or x < 0 or y >= sheight or y < 0:
+            game_close = True
 
+        x += x_change
+        y += y_change
+
+        screen.fill(black)
+        pygame.draw.rect(screen, red, [food_x, food_y, snake_block, snake_block])
 

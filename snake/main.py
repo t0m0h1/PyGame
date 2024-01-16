@@ -56,12 +56,12 @@ def run():
 
 # Game loop
 while not game_over:
-    # Event handling
+   # Event handling    
     while game_close == True:
         screen.fill(black)
         game_over_message = message_font.render("Game Over!", True, red)
         screen.blit(game_over_message, [swidth / 3, sheight / 3])
-        display_score(snake_length - 1)
+        display_score(snake_block - 1)
         pygame.display.update()
 
         for event in pygame.event.get():

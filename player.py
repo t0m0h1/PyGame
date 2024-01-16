@@ -27,12 +27,12 @@ class Player(Sprite):
             if self.rect.x <= 0:
                 self.rect.x = 0
 
-        elif keys[pygame.K_RIGHT]:
+        if keys[pygame.K_RIGHT]:
             self.rect.x += self.speed
             if self.rect.x >= 450:
                 self.rect.x = 450
 
-        elif keys[pygame.K_SPACE] and self.ready:
+        if keys[pygame.K_SPACE] and self.ready:
             self.shoot_laser()
             self.ready = False
             self.laser_time = pygame.time.get_ticks()
@@ -50,7 +50,3 @@ class Player(Sprite):
     def update(self):
         self.get_input()
         self.recharge()
-
-
-
-

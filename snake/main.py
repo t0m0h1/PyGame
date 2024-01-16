@@ -82,4 +82,21 @@ def run():
 
         screen.fill(black)
         pygame.draw.rect(screen, red, [food_x, food_y, snake_block, snake_block])
+        snake_pixels.append([x, y])
+
+        if len(snake_pixels) > snake_length:
+            del snake_pixels[0]
+
+        for pixel in snake_pixels[:-1]:
+            if pixel == [x, y]:
+                game_close = True
+
+        draw_snake(snake_block, snake_pixels)
+        display_score(snake_length - 1)
+
+        pygame.display.update()
+        clock.tick(60)
+
+
+pygame.quit()
 

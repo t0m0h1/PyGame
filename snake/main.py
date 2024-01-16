@@ -17,6 +17,7 @@ swidth, sheight = 800, 600
 screen = pygame.display.set_mode((swidth, sheight))
 pygame.display.set_caption("Snake Game")
 
+clock = pygame.time.Clock()
 # Game loop
 running = True
 while running:
@@ -32,6 +33,7 @@ while running:
 
     # Update the display
     pygame.display.flip()
+    clock.tick(60)  # 60 frames per second
 
      
 

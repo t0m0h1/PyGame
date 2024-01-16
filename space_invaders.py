@@ -9,6 +9,7 @@ import obstacle # importing obstacle module
 class Game:
     def __init__(self, screen):  # Add the 'screen' parameter
         self.screen = screen
+        self.swidth, self.sheight = screen.get_width(), screen.get_height()
 
         # player setup
         player_sprite = Player((screen.get_width() // 2, screen.get_height() - 8)) # creating player sprite position

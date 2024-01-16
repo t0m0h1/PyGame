@@ -6,7 +6,13 @@ import random
 # Initialize Pygame
 pygame.init()
 
-# Set up the display
+# variables and setup
+green = (0, 255, 0)
+red = (255, 0, 0)
+white = (255, 255, 255)
+black = (0, 0, 0)
+orange = (255, 165, 0)
+
 swidth, sheight = 800, 600
 screen = pygame.display.set_mode((swidth, sheight))
 pygame.display.set_caption("Snake Game")
@@ -26,6 +32,8 @@ while running:
 
     # Update the display
     pygame.display.flip()
+
+     
 
 # Clean up Pygame
 pygame.quit()

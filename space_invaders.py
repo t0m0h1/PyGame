@@ -30,7 +30,7 @@ class Game:
                 if col == 'x':
                     x = x_start + col_index * self.block_size + offset_x
                     y = y_start + row_index * self.block_size 
-                    block = obstacle.Block(self.block_size, (0, 0, 255), x-100, y-60)
+                    block = obstacle.Block(self.block_size, (0, 0, 255), x-115, y-60)
                     self.blocks.add(block)
 
     def create_multiple_obstacles(self, *offset, x_start, y_start):

@@ -104,3 +104,37 @@ def game_over_screen():
         
 
 # main game loop
+def run():
+    global snake_speed, snake_pos, food_pos, score
+    snake_pos = [[WIDTH//2, HEIGHT//2]]
+    snake_speed = [0, BLOCK_SIZE]
+    food_pos = generate_food()
+    score = 0
+    running = True
+    while running:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                running = False
+            keys = pygame.key.get_pressed()
+
+            for key in keys:
+                if keys[pygame.K_UP]:
+                    # when UP is pressed but the snake is moving down, ignore the input
+                    if snake_speed[1] == block_size:
+                        continue
+                    snake_speed = [0, -block_size]
+                if keys[pygame.K_DOWN]:
+                    # when DOWN is pressed but the snake is moving up, ignore the input
+                    if snake_speed[1] == -block_size:
+                        continue
+                    snake_speed = [0, block_size]
+                if keys[pygame.K_LEFT]:
+                    # when LEFT is pressed but the snake is moving right, ignore the input
+                    if snake_speed[0] == block_size:
+                        continue
+                    snake_speed = [-block_size, 0]
+                if keys[pygame.K_RIGHT]:
+                    # when RIGHT is pressed but the snake is moving left, ignore the input
+                    if snake_speed[0] == -block_size:
+                        continue
+                    snake_speed = [block_size,0]

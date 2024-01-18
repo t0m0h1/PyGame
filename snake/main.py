@@ -46,3 +46,28 @@ def draw_objects():
     pygame.draw.rect(screen, red, (food_pos[0], food_pos[1], block_size, block_size))
     score_text = score_font.render(f'Score: {score}', True, white)
     screen.blit(score_text, (10, 10))
+
+
+# moving the snake
+    
+def move_snake():
+    global food_pos, score
+    new_head = [snake_pos[0][0] + snake_speed[0], snake_pos[0][1] + snake_speed[1]]
+
+    if teleport:
+        if new_head[0] < 0:
+            new_head[0] = swidth - block_size
+        elif new_head[0] >= swidth:
+            new_head[0] = 0
+        if new_head[1] < 0:
+            new_head[1] = sheight - block_size
+        elif new_head[1] >= sheight:
+            new_head[1] = 0
+
+    if new_head in snake_pos[1:]:
+        snake_pos = generate_food()
+        score += 1
+    else:
+        snake_pos.pop()
+    snake_pos.insert(0, new_head)
+

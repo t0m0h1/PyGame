@@ -138,3 +138,14 @@ def run():
                     if snake_speed[0] == -block_size:
                         continue
                     snake_speed = [block_size,0]
+
+                if game_over():
+                    game_over_screen()
+                    return
+                move_snake()
+                draw_objects()
+                pygame.display.update()
+                clock.tick(10)
+
+if __name__ == '__main__':
+    run()

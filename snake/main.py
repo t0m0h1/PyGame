@@ -43,3 +43,6 @@ def draw_objects():
     screen.fill(black)
     for pos in snake_pos:
         pygame.draw.rect(screen, white, (pos[0], pos[1], block_size, block_size))
+    pygame.draw.rect(screen, red, (food_pos[0], food_pos[1], block_size, block_size))
+    score_text = score_font.render(f'Score: {score}', True, white)
+    screen.blit(score_text, (10, 10))

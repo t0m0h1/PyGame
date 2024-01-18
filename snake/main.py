@@ -122,38 +122,26 @@ def run():
 
             for key in keys:
                 if keys[pygame.K_UP]:
-                    # when UP is pressed but the snake is moving down, ignore the input
                     if snake_speed[1] == block_size:
                         continue
                     snake_speed = [0, -block_size]
                 if keys[pygame.K_DOWN]:
-                    # when DOWN is pressed but the snake is moving up, ignore the input
                     if snake_speed[1] == -block_size:
                         continue
                     snake_speed = [0, block_size]
                 if keys[pygame.K_LEFT]:
-                    # when LEFT is pressed but the snake is moving right, ignore the input
                     if snake_speed[0] == block_size:
                         continue
                     snake_speed = [-block_size, 0]
                 if keys[pygame.K_RIGHT]:
-                    # when RIGHT is pressed but the snake is moving left, ignore the input
                     if snake_speed[0] == -block_size:
                         continue
                     snake_speed = [block_size,0]
 
-                if game_over():
-                    game_over_screen()
-                    return
-                move_snake()
-                draw_objects()
-                pygame.display.update()
-                clock.tick(10)
-
-if __name__ == '__main__':
-    run()
-
-
-
-
-
+        if game_over():
+            game_over_screen()
+            return
+        move_snake()
+        draw_objects()
+        pygame.display.update()
+        clock.tick(10)

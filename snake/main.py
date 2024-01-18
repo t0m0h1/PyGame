@@ -49,9 +49,8 @@ def draw_objects():
 
 
 # moving the snake
-    
-def move_snake(snake_pos):
-    global food_pos, score,
+def move_snake():
+    global food_pos, score
     new_head = [snake_pos[0][0] + snake_speed[0], snake_pos[0][1] + snake_speed[1]]
 
     if teleport:
@@ -65,11 +64,15 @@ def move_snake(snake_pos):
             new_head[1] = 0
 
     if new_head in snake_pos[1:]:
-        snake_pos = generate_food()
+        game_over_screen()  # Game should end when the snake hits itself
+        return
+    elif new_head == food_pos:  # Snake eats the food
+        food_pos = generate_food()
         score += 1
     else:
-        snake_pos.pop()
-    snake_pos.insert(0, new_head)
+        snake_pos.pop()  # Remove the tail of the snake if it doesn't eat food
+
+    snake_pos.insert(0, new_head)  # Insert the new head of the snake
 
 
 # game over condition
@@ -106,7 +109,7 @@ def game_over_screen():
 # main game loop
 def run():
     global snake_speed, snake_pos, food_pos, score
-    snake_pos = [[swidth//2, sheight//2]]
+    snake_pos = [[swidth/2, sheight/2]]
     snake_speed = [0, block_size]
     food_pos = generate_food()
     score = 0
@@ -149,3 +152,8 @@ def run():
 
 if __name__ == '__main__':
     run()
+
+
+
+
+

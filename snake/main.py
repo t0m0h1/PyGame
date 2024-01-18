@@ -49,8 +49,8 @@ def draw_objects():
 
 
 # moving the snake
-def move_snake():
-    global snake_pos,food_pos, score
+def move_snake(snake_pos=snake_pos):
+    global food_pos, score
     new_head = [snake_pos[0][0] + snake_speed[0], snake_pos[0][1] + snake_speed[1]]
 
     if teleport:
@@ -108,35 +108,28 @@ def game_over_screen():
 
 # main game loop
 def run():
-    global snake_speed, snake_pos, food_pos, score
+    global snake_speed, snake_pos, food_pos, score, teleport
     snake_pos = [[swidth/2, sheight/2]]
     snake_speed = [0, block_size]
     food_pos = generate_food()
     score = 0
+    teleport = True
     running = True
     while running:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
-            keys = pygame.key.get_pressed()
 
-            for key in keys:
-                if keys[pygame.K_UP]:
-                    if snake_speed[1] == block_size:
-                        continue
-                    snake_speed = [0, -block_size]
-                if keys[pygame.K_DOWN]:
-                    if snake_speed[1] == -block_size:
-                        continue
-                    snake_speed = [0, block_size]
-                if keys[pygame.K_LEFT]:
-                    if snake_speed[0] == block_size:
-                        continue
-                    snake_speed = [-block_size, 0]
-                if keys[pygame.K_RIGHT]:
-                    if snake_speed[0] == -block_size:
-                        continue
-                    snake_speed = [block_size,0]
+        keys = pygame.key.get_pressed()
+
+        if keys[pygame.K_UP] and snake_speed[1] != block_size:
+            snake_speed = [0, -block_size]
+        if keys[pygame.K_DOWN] and snake_speed[1] != -block_size:
+            snake_speed = [0, block_size]
+        if keys[pygame.K_LEFT] and snake_speed[0] != block_size:
+            snake_speed = [-block_size, 0]
+        if keys[pygame.K_RIGHT] and snake_speed[0] != -block_size:
+            snake_speed = [block_size, 0]
 
         if game_over():
             game_over_screen()
@@ -145,3 +138,7 @@ def run():
         draw_objects()
         pygame.display.update()
         clock.tick(10)
+
+
+if __name__ == '__main__':
+    run()

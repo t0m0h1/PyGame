@@ -110,7 +110,7 @@ def game_over_screen():
 def run():
     global snake_speed, snake_pos, food_pos, score, teleport
     snake_pos = [[swidth/2, sheight/2]]
-    snake_speed = [0, block_size]
+    snake_speed = [block_size, 0]
     food_pos = generate_food()
     score = 0
     teleport = True
@@ -119,26 +119,32 @@ def run():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
+            elif event.type == pygame.KEYDOWN:  # Handle key presses
+                if event.key == pygame.K_UP and snake_speed[1] != block_size:
+                    snake_speed = [0, -block_size]
+                elif event.key == pygame.K_DOWN and snake_speed[1] != -block_size:
+                    snake_speed = [0, block_size]
+                elif event.key == pygame.K_LEFT and snake_speed[0] != block_size:
+                    snake_speed = [-block_size, 0]
+                elif event.key == pygame.K_RIGHT and snake_speed[0] != -block_size:
+                    snake_speed = [block_size, 0]
 
-        keys = pygame.key.get_pressed()
-
-        if keys[pygame.K_UP] and snake_speed[1] != block_size:
-            snake_speed = [0, -block_size]
-        if keys[pygame.K_DOWN] and snake_speed[1] != -block_size:
-            snake_speed = [0, block_size]
-        if keys[pygame.K_LEFT] and snake_speed[0] != block_size:
-            snake_speed = [-block_size, 0]
-        if keys[pygame.K_RIGHT] and snake_speed[0] != -block_size:
-            snake_speed = [block_size, 0]
+        move_snake()
 
         if game_over():
             game_over_screen()
             return
-        move_snake()
-        draw_objects()
-        pygame.display.update()
-        clock.tick(10)
 
+        screen.fill(black)  # Clear the screen
 
+        draw_objects()  # Draw the game objects
+
+        pygame.display.update()  # Update the display
+
+        clock.tick(10)  # Control the game speed
+
+    pygame.quit()  # Quit the game
+
+# Run the game
 if __name__ == '__main__':
     run()

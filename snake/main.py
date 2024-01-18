@@ -50,7 +50,7 @@ def draw_objects():
 
 # moving the snake
 def move_snake():
-    global food_pos, score
+    global snake_pos,food_pos, score
     new_head = [snake_pos[0][0] + snake_speed[0], snake_pos[0][1] + snake_speed[1]]
 
     if teleport:

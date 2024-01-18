@@ -71,3 +71,36 @@ def move_snake():
         snake_pos.pop()
     snake_pos.insert(0, new_head)
 
+
+# game over condition
+    
+def game_over():
+    if teleport:
+        return False
+    else:
+        return snake_pos[0][0] < 0 or snake_pos[0][0] >= swidth or snake_pos[0][1] < 0 or snake_pos[0][1] >= sheight or snake_pos[0] in snake_pos[1:]
+    
+
+def game_over_screen():
+    screen.fill(black)
+    game_over_text = score_font.render('Game Over', True, white)
+    screen.blit(game_over_text, (swidth/2 - game_over_text.get_width()/2, sheight/2 - game_over_text.get_height()/2))
+    pygame.display.update()
+    
+    while True:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                quit()
+                return
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_r:
+                    run()
+                    return
+                if event.key == pygame.K_q:
+                    pygame.quit()
+                    quit()
+                    return
+        
+
+# main game loop

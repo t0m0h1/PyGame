@@ -106,8 +106,8 @@ def game_over_screen():
 # main game loop
 def run():
     global snake_speed, snake_pos, food_pos, score
-    snake_pos = [[WIDTH//2, HEIGHT//2]]
-    snake_speed = [0, BLOCK_SIZE]
+    snake_pos = [[swidth//2, sheight//2]]
+    snake_speed = [0, block_size]
     food_pos = generate_food()
     score = 0
     running = True

@@ -23,7 +23,8 @@ clock = pygame.time.Clock()
 snake_pos = [[swidth/2, sheight/2]]
 snake_speed = [0, block_size]
 
-teleport = True
+teleport = False
+# teleport = False means that the snake will die if it hits the wall
 
 def generate_food():
 # Generates the position of the snake's food.
@@ -48,8 +49,7 @@ def draw_objects():
     screen.blit(score_text, (10, 10))
 
 
-# moving the snake
-def move_snake(snake_pos=snake_pos):
+def move_snake():
     global food_pos, score
     new_head = [snake_pos[0][0] + snake_speed[0], snake_pos[0][1] + snake_speed[1]]
 
@@ -66,13 +66,14 @@ def move_snake(snake_pos=snake_pos):
     if new_head in snake_pos[1:]:
         game_over_screen()  # Game should end when the snake hits itself
         return
-    elif new_head == food_pos:  # Snake eats the food
+    else:
+        snake_pos.insert(0, new_head)  # Insert the new head of the snake
+
+    if new_head == food_pos:  # Snake eats the food
         food_pos = generate_food()
         score += 1
     else:
         snake_pos.pop()  # Remove the tail of the snake if it doesn't eat food
-
-    snake_pos.insert(0, new_head)  # Insert the new head of the snake
 
 
 # game over condition
@@ -106,6 +107,8 @@ def game_over_screen():
                     return
         
 
+
+
 # main game loop
 def run():
     global snake_speed, snake_pos, food_pos, score, teleport
@@ -113,9 +116,13 @@ def run():
     snake_speed = [block_size, 0]
     food_pos = generate_food()
     score = 0
-    teleport = True
+    teleport = False
     running = True
     while running:
+        pygame.event.pump()  # Allow event handling to continue
+
+        clock.tick(10)  # Control the game speed
+
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
@@ -141,9 +148,8 @@ def run():
 
         pygame.display.update()  # Update the display
 
-        clock.tick(10)  # Control the game speed
-
     pygame.quit()  # Quit the game
+
 
 # Run the game
 if __name__ == '__main__':
